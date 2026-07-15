@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-<div class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+<div class="bg-indigo-600 text-white">
     <div class="max-w-4xl mx-auto px-4 py-24 text-center">
         <h1 class="text-5xl font-bold mb-4">Discover Education in Bangladesh</h1>
         <p class="text-xl text-indigo-100 mb-8">Comprehensive database of schools, madrasas, and colleges — compare fees, facilities, and admission information.</p>
