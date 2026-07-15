@@ -13,8 +13,11 @@
         "laravel/scout": "^11.3",
         "laravel/tinker": "^3.0",
         "maatwebsite/excel": "^3.1",
+        "smalot/pdfparser": "^2.12",
         "spatie/laravel-backup": "^10.3",
-        "spatie/laravel-permission": "^8.3"
+        "spatie/laravel-permission": "^8.3",
+        "symfony/css-selector": "^8.1",
+        "symfony/dom-crawler": "^8.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

@@ -2,7 +2,10 @@
 
 namespace App\Modules\Scraper\Models;
 
+use App\Modules\Institute\Models\Institute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ScraperSource extends Model
 {
@@ -19,5 +22,30 @@ class ScraperSource extends Model
             'is_active' => 'boolean',
             'last_successful_run_at' => 'datetime',
         ];
+    }
+
+    public function institute(): BelongsTo
+    {
+        return $this->belongsTo(Institute::class);
+    }
+
+    public function runs(): HasMany
+    {
+        return $this->hasMany(ScraperRun::class);
+    }
+
+    public function latestRun(): HasMany
+    {
+        return $this->hasMany(ScraperRun::class)->latestOfMany();
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
+    public function scopeByFrequency($query, string $frequency)
+    {
+        return $query->where('schedule_frequency', $frequency);
     }
 }

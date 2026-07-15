@@ -172,16 +172,13 @@ Development environment, core architecture, authentication.
 - [x] Pest tests — Pass (2/2)
 - [x] Vite build — Pass
 
-### Next Phase — Phase 1: Core Data (Weeks 3–6)
-- Institute model + pivot factories
-- Institute CRUD (admin)
-- Taxonomy CRUD (admin)
-- Location CRUD + browsing
-- Public institute profile page
-- Public listing page with filters
-- Meilisearch indexing for institutes
-- Search bar with autocomplete
-- Location/category landing pages
-- Seed 50–100 real institutes
+### Next Phase — Phase 5: SEO & Content (Weeks 15–16)
+- SEO metadata model and admin
+- Dynamic meta title/description generation
+- Schema.org structured data
+- Sitemaps
+- Redirect management
+- Programmatic SEO pages
+- Static pages (About, Contact, Privacy, Terms)
 
 ---
