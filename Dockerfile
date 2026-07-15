@@ -38,6 +38,9 @@ WORKDIR /var/www/html
 # Copy application
 COPY . /var/www/html/
 
+# Create temp directory for composer/uploads before installing dependencies
+RUN mkdir -p /var/www/html/storage/tmp && chmod 777 /var/www/html/storage/tmp
+
 # Install dependencies
 RUN composer install --no-interaction --no-dev --optimize-autoloader
 
