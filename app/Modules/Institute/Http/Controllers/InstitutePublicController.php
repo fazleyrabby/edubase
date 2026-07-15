@@ -11,6 +11,7 @@ use App\Modules\Taxonomy\Models\Category;
 use App\Modules\Taxonomy\Models\Curriculum;
 use App\Modules\Taxonomy\Models\InstituteType;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
@@ -19,8 +20,8 @@ class InstitutePublicController extends Controller
     public function index(Request $request, SeoService $seo): View
     {
         $cacheKey = 'institutes:listing:'.md5(serialize($request->all()));
-        $institutes = Cache::remember($cacheKey, 300, function () use ($request) {
-            return Institute::published()
+        $cachedData = Cache::remember($cacheKey, 300, function () use ($request) {
+            $paginator = Institute::published()
                 ->select([
                     'id', 'uuid', 'name', 'slug', 'institute_type_id',
                     'district_id', 'upazila_id', 'estimated_monthly_fee',
@@ -34,7 +35,25 @@ class InstitutePublicController extends Controller
                 ->when($request->gender, fn ($q, $g) => $q->where('gender', $g))
                 ->latest('published_at')
                 ->paginate(20);
+
+            return [
+                'items' => $paginator->items(),
+                'total' => $paginator->total(),
+                'per_page' => $paginator->perPage(),
+                'current_page' => $paginator->currentPage(),
+            ];
         });
+
+        $institutes = new LengthAwarePaginator(
+            $cachedData['items'],
+            $cachedData['total'],
+            $cachedData['per_page'],
+            $cachedData['current_page'],
+            [
+                'path' => LengthAwarePaginator::resolveCurrentPath(),
+                'query' => $request->query(),
+            ]
+        );
 
         $types = Cache::remember('taxonomy:types:all', 86400, fn () => InstituteType::all());
         $categories = Cache::remember('taxonomy:categories:active', 86400, fn () => Category::where('is_active', true)->get());

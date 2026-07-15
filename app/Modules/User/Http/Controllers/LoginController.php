@@ -37,6 +37,11 @@ class LoginController extends Controller
             RateLimiter::clear($key);
             $request->session()->regenerate();
 
+            $user = Auth::user();
+            if ($user->hasRole('super_admin') || $user->hasRole('admin')) {
+                return redirect()->intended(route('admin.institutes.index'));
+            }
+
             return redirect()->intended(route('dashboard'));
         }
 
