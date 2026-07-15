@@ -2,26 +2,27 @@
     'title' => 'Discover Education in Bangladesh',
     'subtitle' => 'Comprehensive database of schools, madrasas, and colleges — compare fees, facilities, and admission information.',
     'searchAction' => '',
-    'color' => 'rgba(128, 128, 128, 1)', // Matches demo.tsx color rgba(128, 128, 128, 1)
-    'scale' => 100,
+    'color' => 'rgba(128, 128, 128, 0.2)', // Soft, subtle glowing background color
+    'scale' => 30, // Reduced scale for smooth, large wave transitions instead of jittery shaking
     'speed' => 15,
-    'noiseOpacity' => 0.5, // Matches noise.opacity: 1 (noise.opacity / 2 = 0.5)
+    'noiseOpacity' => 0.4, // Subtle textured paper background overlay
     'noiseScale' => 1.2,
 ])
 
 @php
     $id = 'shadowoverlay-' . Str::random(8);
-    $displacementScale = 20 + (($scale - 1) / 99) * 80; // maps scale 1-100 to 20-100
-    $animationDuration = 1000 + (($speed - 1) / 99) * -950; // maps speed 1-100 to 1000-50
+    $displacementScale = 20 + (($scale - 1) / 99) * 80; // maps scale to displacement offset
+    $animationDuration = 1000 + (($speed - 1) / 99) * -950;
     $durationMs = $animationDuration / 25;
 
-    $baseFreqX = 0.001 - ($scale / 100) * 0.0005;
-    $baseFreqY = 0.004 - ($scale / 100) * 0.002;
+    // Extremely low frequency values to guarantee slow, organic fluid motion without high-frequency jitter
+    $baseFreqX = 0.0001;
+    $baseFreqY = 0.0003;
 @endphp
 
 <div {{ $attributes->merge(['class' => 'relative w-full overflow-hidden bg-gray-950 text-white min-h-[550px] flex items-center justify-center']) }}>
     
-    <!-- SVG Definition placed outside the filtered element to prevent recursive rendering issues -->
+    <!-- SVG Definition placed outside the filtered element to prevent rendering issues -->
     <svg style="position: absolute; width: 0; height: 0;">
         <defs>
             <filter id="{{ $id }}">
