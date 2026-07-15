@@ -13,8 +13,7 @@
 
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus
-                       class="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                <x-input type="text" id="name" name="name" :value="old('name')" required autofocus />
                 @error('name')
                     <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
                 @enderror
@@ -22,8 +21,7 @@
 
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" required
-                       class="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                <x-input type="email" id="email" name="email" :value="old('email')" required />
                 @error('email')
                     <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
                 @enderror
@@ -31,8 +29,7 @@
 
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                <input type="password" id="password" name="password" required
-                       class="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                <x-input type="password" id="password" name="password" required />
                 @error('password')
                     <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
                 @enderror
@@ -40,8 +37,7 @@
 
             <div>
                 <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" required
-                       class="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                <x-input type="password" id="password_confirmation" name="password_confirmation" required />
             </div>
 
             <button type="submit" class="w-full py-2.5 px-4 bg-indigo-600 text-white font-medium text-sm rounded-lg hover:bg-indigo-700 transition">
