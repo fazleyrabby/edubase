@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Modules\Location\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Modules\Institute\Models\Institute;
+use App\Modules\Location\Models\District;
+use App\Modules\Location\Models\Division;
+use App\Modules\Location\Models\Upazila;
+use Illuminate\View\View;
+
+class LocationPublicController extends Controller
+{
+    public function division(Division $division): View
+    {
+        $districts = $division->districts()->whereHas('institutes', fn ($q) => $q->published())->get();
+        $institutes = Institute::published()
+            ->where('division_id', $division->id)
+            ->with(['type', 'district'])
+            ->latest('published_at')
+            ->paginate(20);
+
+        return view('public.locations.division', compact('division', 'districts', 'institutes'));
+    }
+
+    public function district(District $district): View
+    {
+        $upazilas = $district->upazilas()->whereHas('institutes', fn ($q) => $q->published())->get();
+        $institutes = Institute::published()
+            ->where('district_id', $district->id)
+            ->with(['type', 'upazila'])
+            ->latest('published_at')
+            ->paginate(20);
+
+        return view('public.locations.district', compact('district', 'upazilas', 'institutes'));
+    }
+
+    public function upazila(Upazila $upazila): View
+    {
+        $institutes = Institute::published()
+            ->where('upazila_id', $upazila->id)
+            ->with(['type', 'area'])
+            ->latest('published_at')
+            ->paginate(20);
+
+        return view('public.locations.upazila', compact('upazila', 'institutes'));
+    }
+}

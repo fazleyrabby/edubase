@@ -32,8 +32,8 @@ return new class extends Migration
             $table->foreignId('country_id')->constrained()->restrictOnDelete();
             $table->foreignId('division_id')->constrained()->restrictOnDelete();
             $table->foreignId('district_id')->constrained()->restrictOnDelete();
-            $table->foreignId('upazila_id')->constrained()->restrictOnDelete();
-            $table->foreignId('area_id')->constrained()->restrictOnDelete();
+            $table->foreignId('upazila_id')->nullable()->constrained()->restrictOnDelete();
+            $table->foreignId('area_id')->nullable()->constrained()->restrictOnDelete();
             $table->string('full_address', 1000)->nullable();
             $table->string('postal_code', 10)->nullable();
             $table->decimal('latitude', 10, 7)->nullable();

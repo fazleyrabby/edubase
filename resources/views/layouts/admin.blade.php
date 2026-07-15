@@ -17,6 +17,12 @@
                 <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100">
                     Dashboard
                 </a>
+                <a href="{{ route('admin.institutes.index') }}" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100">
+                    Institutes
+                </a>
+                <a href="{{ route('admin.taxonomies.index') }}" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100">
+                    Taxonomies
+                </a>
                 <form method="POST" action="{{ route('admin.logout') }}" class="pt-4 border-t border-gray-200">
                     @csrf
                     <button type="submit" class="w-full px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg">

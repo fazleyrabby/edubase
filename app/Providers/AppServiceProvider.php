@@ -2,23 +2,55 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Modules\Institute\Events\InstituteArchived;
+use App\Modules\Institute\Events\InstituteCreated;
+use App\Modules\Institute\Events\InstitutePublished;
+use App\Modules\Institute\Events\InstituteUpdated;
+use App\Modules\Institute\Listeners\ClearInstituteCache;
+use App\Modules\Institute\Listeners\QueueInstituteReindex;
+use App\Modules\Institute\Models\Institute;
+use App\Modules\Institute\Policies\InstitutePolicy;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
+    protected $policies = [
+        Institute::class => InstitutePolicy::class,
+    ];
+
     public function register(): void
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        //
+        $this->registerPolicies();
+
+        Event::listen(
+            InstituteCreated::class,
+            [QueueInstituteReindex::class, 'handle'],
+        );
+
+        Event::listen(
+            InstituteUpdated::class,
+            [QueueInstituteReindex::class, 'handle'],
+        );
+
+        Event::listen(
+            InstituteUpdated::class,
+            [ClearInstituteCache::class, 'handle'],
+        );
+
+        Event::listen(
+            InstitutePublished::class,
+            [QueueInstituteReindex::class, 'handle'],
+        );
+
+        Event::listen(
+            InstituteArchived::class,
+            [ClearInstituteCache::class, 'handle'],
+        );
     }
 }
