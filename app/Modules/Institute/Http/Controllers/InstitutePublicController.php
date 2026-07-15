@@ -28,7 +28,7 @@ class InstitutePublicController extends Controller
             $query = Institute::published()
                 ->with(['type', 'district', 'upazila', 'primaryCategory'])
                 ->withCount([
-                    'fees' => fn ($q) => $q->where('is_published', true),
+                    'fees' => fn ($q) => $q->with('feeType')->where('is_published', true),
                     'facilities',
                     'contacts',
                     'curriculums',
@@ -224,7 +224,7 @@ class InstitutePublicController extends Controller
                     'categories', 'curriculums', 'boards', 'programs', 'subjects',
                     'facilities.group', 'languages', 'contacts', 'socialLinks',
                     'media', 'shifts',
-                    'fees' => fn ($q) => $q->where('moderation_status', 'approved')->where('is_published', true),
+                    'fees' => fn ($q) => $q->with('feeType')->where('moderation_status', 'approved')->where('is_published', true),
                     'admissionCirculars' => fn ($q) => $q->where('is_published', true),
                 ]);
 

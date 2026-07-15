@@ -355,10 +355,14 @@
                         @foreach($feesColl->take(5) as $fee)
                             @php
                                 $feeObj = is_array($fee) ? (object)$fee : $fee;
+                                $feeType = $feeObj->feeType ?? null;
+                                $feeName = is_array($feeType)
+                                    ? ($feeType['name'] ?? 'Fee')
+                                    : (is_object($feeType) ? ($feeType->name ?? 'Fee') : 'Fee');
                             @endphp
                             <div class="flex justify-between">
-                                <span class="text-text-secondary">{{ is_array($feeObj->feeType) ? ($feeObj->feeType['name'] ?? 'Fee') : ($feeObj->feeType->name ?? 'Fee') }}</span>
-                                <span class="text-text-primary font-medium">{{ number_format($feeObj->amount, 0) }} BDT</span>
+                                <span class="text-text-secondary">{{ $feeName }}</span>
+                                <span class="text-text-primary font-medium">{{ number_format($feeObj->amount ?? 0, 0) }} BDT</span>
                             </div>
                         @endforeach
                     </div>
