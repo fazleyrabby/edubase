@@ -41,6 +41,12 @@
                         class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         Sign in
                     </button>
+                    
+                    <button type="button"
+                        onclick="document.getElementById('email').value='admin@edubase.com'; document.getElementById('password').value='password'; this.form.submit();"
+                        class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-lg text-sm font-medium transition duration-150">
+                        Quick Demo Login
+                    </button>
                 </div>
             </form>
         </div>
