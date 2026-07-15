@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'ilmatlas_compare';
+const STORAGE_KEY = 'edubase_compare';
 const MAX_ITEMS = 5;
 
 function getStored() {

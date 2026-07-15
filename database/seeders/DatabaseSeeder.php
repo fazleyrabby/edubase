@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Super Admin',
-            'email' => 'admin@ilmatlas.com',
+            'email' => 'admin@edubase.com',
             'password' => bcrypt('password'),
         ])->assignRole('super_admin');
     }

@@ -1,4 +1,4 @@
-# ILMATLAS
+# EduBase
 
 **National Education Discovery, Comparison & Fee Intelligence Platform**
 
@@ -52,7 +52,7 @@ composer run dev
 
 ## Default Admin
 
-- **Email:** admin@ilmatlas.com
+- **Email:** admin@edubase.com
 - **Password:** password
 
 ## Phase 0 — Foundation

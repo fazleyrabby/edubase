@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Compare: '.implode(' vs ', array_map(fn ($i) => $i->name, $matrix->institutes)).' — ILMATLAS')
+@section('title', 'Compare: '.implode(' vs ', array_map(fn ($i) => $i->name, $matrix->institutes)).' — EduBase')
 @section('meta_description', 'Side-by-side comparison of '.implode(', ', array_map(fn ($i) => $i->name, $matrix->institutes)).'. Compare fees, curriculum, facilities, location, and more.')
 @push('styles')
 <link rel="canonical" href="{{ url()->current() }}">

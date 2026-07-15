@@ -4,15 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'ILMATLAS — Education Discovery Platform')</title>
+    <title>@yield('title', 'EduBase — Education Discovery Platform')</title>
     <meta name="description" content="@yield('meta_description', 'Discover, compare, and analyze educational institutions across Bangladesh')">
+    <meta name="keywords" content="@yield('meta_keywords', 'Bangladesh, education, schools, madrasas, colleges, institutes, fees, admission')">
+    <meta name="robots" content="@yield('robots', 'index, follow')">
+
+    <meta property="og:title" content="@yield('og_title', 'EduBase — Education Discovery Platform')">
+    <meta property="og:description" content="@yield('og_description', 'Discover, compare, and analyze educational institutions across Bangladesh')">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="@yield('og_image', asset('assets/og-default.png'))">
+    <meta property="og:site_name" content="EduBase">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('og_title', 'EduBase — Education Discovery Platform')">
+    <meta name="twitter:description" content="@yield('og_description', 'Discover, compare, and analyze educational institutions across Bangladesh')">
+    <meta name="twitter:image" content="@yield('og_image', asset('assets/og-default.png'))">
+
+    <link rel="canonical" href="@yield('canonical_url', url()->current())">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
+
+    <x-schema-website />
 </head>
 <body class="font-sans antialiased text-gray-900 bg-white">
     <header class="border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="{{ url('/') }}" class="text-xl font-bold text-indigo-600">ILMATLAS</a>
+            <a href="{{ url('/') }}" class="text-xl font-bold text-indigo-600">EduBase</a>
             <nav class="flex items-center gap-6">
                 <a href="{{ route('institutes.index') }}" class="text-sm text-gray-600 hover:text-gray-900">Institutes</a>
                 <a href="{{ route('search') }}" class="text-sm text-gray-600 hover:text-gray-900">Search</a>
@@ -38,7 +57,7 @@
 
     <footer class="border-t border-gray-200 mt-16">
         <div class="max-w-7xl mx-auto px-4 py-8 text-sm text-gray-500">
-            &copy; {{ date('Y') }} ILMATLAS. All rights reserved.
+            &copy; {{ date('Y') }} EduBase. All rights reserved.
         </div>
     </footer>
 

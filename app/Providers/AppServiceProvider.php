@@ -11,7 +11,9 @@ use App\Modules\Institute\Listeners\QueueInstituteReindex;
 use App\Modules\Institute\Models\Institute;
 use App\Modules\Institute\Policies\InstitutePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Vite;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -52,5 +54,11 @@ class AppServiceProvider extends ServiceProvider
             InstituteArchived::class,
             [ClearInstituteCache::class, 'handle'],
         );
+
+        Vite::useCspNonce(fn () => app()->has('csp-nonce') ? app('csp-nonce') : null);
+
+        Blade::directive('nonce', function () {
+            return 'nonce="<?php echo app(\'csp-nonce\'); ?>"';
+        });
     }
 }

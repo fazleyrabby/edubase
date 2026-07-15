@@ -285,7 +285,7 @@ class Institute extends Model
                 }
 
                 foreach ($activeFees as $fee) {
-                    $multiplier = config("ilmatlas.fees.frequency_multipliers.{$fee->frequency}", 1);
+                    $multiplier = config("edubase.fees.frequency_multipliers.{$fee->frequency}", 1);
                     $monthlyAmount = ($fee->amount * $multiplier) / 12;
                     $totalMonthly += $monthlyAmount;
                 }

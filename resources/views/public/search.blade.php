@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', $query ? "Search: $query — ILMATLAS" : 'Search — ILMATLAS')
+@section('title', $query ? "Search: $query — EduBase" : 'Search — EduBase')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 py-8">

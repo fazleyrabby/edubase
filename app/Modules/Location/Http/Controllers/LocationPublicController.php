@@ -13,7 +13,12 @@ class LocationPublicController extends Controller
 {
     public function division(Division $division): View
     {
-        $districts = $division->districts()->whereHas('institutes', fn ($q) => $q->published())->get();
+        $division->loadMissing('districts');
+
+        $districts = $division->districts()
+            ->whereHas('institutes', fn ($q) => $q->published())
+            ->get();
+
         $institutes = Institute::published()
             ->where('division_id', $division->id)
             ->with(['type', 'district'])
@@ -25,7 +30,12 @@ class LocationPublicController extends Controller
 
     public function district(District $district): View
     {
-        $upazilas = $district->upazilas()->whereHas('institutes', fn ($q) => $q->published())->get();
+        $district->loadMissing('division');
+
+        $upazilas = $district->upazilas()
+            ->whereHas('institutes', fn ($q) => $q->published())
+            ->get();
+
         $institutes = Institute::published()
             ->where('district_id', $district->id)
             ->with(['type', 'upazila'])
@@ -37,6 +47,8 @@ class LocationPublicController extends Controller
 
     public function upazila(Upazila $upazila): View
     {
+        $upazila->loadMissing('district.division');
+
         $institutes = Institute::published()
             ->where('upazila_id', $upazila->id)
             ->with(['type', 'area'])

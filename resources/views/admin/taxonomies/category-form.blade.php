@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', $category->exists ? 'Edit Category — ILMATLAS Admin' : 'New Category — ILMATLAS Admin')
+@section('title', $category->exists ? 'Edit Category — EduBase Admin' : 'New Category — EduBase Admin')
 
 @section('content')
 <div class="mb-8">

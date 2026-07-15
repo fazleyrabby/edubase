@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admissions — ILMATLAS Admin')
+@section('title', 'Admissions — EduBase Admin')
 
 @section('content')
 <div class="mb-8 flex items-center justify-between">

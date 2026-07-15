@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', $circular->exists ? 'Edit Circular — ILMATLAS Admin' : 'New Circular — ILMATLAS Admin')
+@section('title', $circular->exists ? 'Edit Circular — EduBase Admin' : 'New Circular — EduBase Admin')
 
 @section('content')
 <div class="mb-8">

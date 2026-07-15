@@ -15,7 +15,7 @@ class PdfAdapter implements ScraperAdapterInterface
         $timeout = $config['timeout'] ?? 60;
 
         $response = Http::timeout($timeout)
-            ->withHeaders(['User-Agent' => 'Mozilla/5.0 (compatible; ILMATLAS-Bot/1.0)'])
+            ->withHeaders(['User-Agent' => 'Mozilla/5.0 (compatible; EduBase-Bot/1.0)'])
             ->get($source->base_url);
 
         $response->throw();

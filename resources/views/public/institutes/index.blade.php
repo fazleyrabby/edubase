@@ -1,11 +1,43 @@
 @extends('layouts.public')
 
-@section('title', 'Institutes — ILMATLAS')
+@section('title', $seo['meta_title'] ?? 'Institutes — EduBase')
+@section('meta_description', $seo['meta_description'] ?? 'Browse and compare schools, madrasas, and colleges across Bangladesh.')
+@section('meta_keywords', $seo['meta_keywords'] ?? '')
+@section('og_title', $seo['og_title'] ?? '')
+@section('og_description', $seo['og_description'] ?? '')
+@section('canonical_url', $seo['canonical_url'] ?? url()->current())
+@if(isset($seo['noindex']) && $seo['noindex'])
+    @section('robots', 'noindex, nofollow')
+@endif
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold text-gray-900 mb-2">Educational Institutes</h1>
-    <p class="text-gray-500 mb-8">Browse and compare schools, madrasas, and colleges across Bangladesh.</p>
+    <x-schema-breadcrumb :items="array_merge(
+        [['name' => 'Home', 'url' => url('/')]],
+        isset($currentType) ? [['name' => 'Institutes', 'url' => route('institutes.index')], ['name' => $currentType->name]] : [],
+        isset($currentDistrict) && !isset($currentType) ? [['name' => 'Institutes', 'url' => route('institutes.index')], ['name' => $currentDistrict->name]] : [],
+        isset($currentType) && isset($currentDistrict) ? [['name' => 'Institutes', 'url' => route('institutes.index')], ['name' => $currentType->name], ['name' => $currentDistrict->name]] : [],
+        !isset($currentType) && !isset($currentDistrict) ? [] : []
+    )" />
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">
+        @if(isset($currentType) && isset($currentDistrict))
+            {{ $currentType->name }}s in {{ $currentDistrict->name }}
+        @elseif(isset($currentType))
+            {{ $currentType->name }}s
+        @elseif(isset($currentDistrict))
+            Institutes in {{ $currentDistrict->name }}
+        @else
+            Educational Institutes
+        @endif
+    </h1>
+    <p class="text-gray-500 mb-8">
+        @if(isset($currentType) && isset($currentDistrict))
+            Browse {{ $currentType->name }}s in {{ $currentDistrict->name }}. Compare fees, curriculum, facilities, and admission.
+        @else
+            Browse and compare schools, madrasas, and colleges across Bangladesh.
+        @endif
+    </p>
 
     <div class="flex gap-4 mb-8 flex-wrap">
         <form method="GET" class="flex gap-4 flex-wrap items-center">
@@ -68,5 +100,68 @@
     <div class="mt-8">
         {{ $institutes->links() }}
     </div>
+
+    @if(isset($currentType, $currentDistrict))
+        <div class="mt-12 bg-gray-50 rounded-xl p-6">
+            <h2 class="text-lg font-semibold mb-4">Browse Other Areas</h2>
+            <div class="flex flex-wrap gap-2">
+                @foreach(\App\Modules\Location\Models\District::inRandomOrder()->limit(10)->get() as $d)
+                    <a href="{{ route('institutes.pseo', ['type' => $currentType->slug, 'district' => $d->slug]) }}"
+                       class="px-3 py-1 bg-white border rounded-full text-sm hover:bg-indigo-50 hover:border-indigo-300 transition">
+                        {{ $currentType->name }}s in {{ $d->name }}
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    @elseif(isset($currentType))
+        <div class="mt-12 bg-gray-50 rounded-xl p-6">
+            <h2 class="text-lg font-semibold mb-4">Browse by District</h2>
+            <div class="flex flex-wrap gap-2">
+                @foreach(\App\Modules\Location\Models\District::inRandomOrder()->limit(12)->get() as $d)
+                    <a href="{{ route('institutes.by.district', $d->slug) }}"
+                       class="px-3 py-1 bg-white border rounded-full text-sm hover:bg-indigo-50 hover:border-indigo-300 transition">
+                        {{ $d->name }}
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    @elseif(isset($currentDistrict))
+        <div class="mt-12 bg-gray-50 rounded-xl p-6">
+            <h2 class="text-lg font-semibold mb-4">Browse by Type</h2>
+            <div class="flex flex-wrap gap-2">
+                @foreach(\App\Modules\Taxonomy\Models\InstituteType::all() as $t)
+                    <a href="{{ route('institutes.by.type', $t->slug) }}"
+                       class="px-3 py-1 bg-white border rounded-full text-sm hover:bg-indigo-50 hover:border-indigo-300 transition">
+                        {{ $t->name }}s in {{ $currentDistrict->name }}
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    @else
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-50 rounded-xl p-6">
+                <h2 class="text-lg font-semibold mb-4">Browse by Type</h2>
+                <div class="flex flex-wrap gap-2">
+                    @foreach(\App\Modules\Taxonomy\Models\InstituteType::all() as $t)
+                        <a href="{{ route('institutes.by.type', $t->slug) }}"
+                           class="px-3 py-1 bg-white border rounded-full text-sm hover:bg-indigo-50 hover:border-indigo-300 transition">
+                            {{ $t->name }}s
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-6">
+                <h2 class="text-lg font-semibold mb-4">Browse by District</h2>
+                <div class="flex flex-wrap gap-2">
+                    @foreach(\App\Modules\Location\Models\District::inRandomOrder()->limit(12)->get() as $d)
+                        <a href="{{ route('institutes.by.district', $d->slug) }}"
+                           class="px-3 py-1 bg-white border rounded-full text-sm hover:bg-indigo-50 hover:border-indigo-300 transition">
+                            {{ $d->name }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
 </div>
 @endsection

@@ -1,10 +1,26 @@
 @extends('layouts.public')
 
-@section('title', $institute->name . ' — ILMATLAS')
-@section('meta_description', Str::limit($institute->description ?? 'View detailed information about ' . $institute->name, 160))
+@section('title', $seo['meta_title'] ?? $institute->name . ' — EduBase')
+@section('meta_description', $seo['meta_description'] ?? Str::limit($institute->description ?? 'View detailed information about ' . $institute->name, 160))
+@section('meta_keywords', $seo['meta_keywords'] ?? '')
+@section('og_title', $seo['og_title'] ?? '')
+@section('og_description', $seo['og_description'] ?? '')
+@section('og_image', $seo['og_image'] ?? '')
+@section('canonical_url', $seo['canonical_url'] ?? url()->current())
+@if(isset($seo['noindex']) && $seo['noindex'])
+    @section('robots', 'noindex, nofollow')
+@endif
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 py-8">
+    <x-schema-educational-organization :institute="$institute" />
+
+    <x-schema-breadcrumb :items="[
+        ['name' => 'Home', 'url' => url('/')],
+        ['name' => 'Institutes', 'url' => route('institutes.index')],
+        ['name' => $institute->name],
+    ]" />
+
     <div class="mb-8">
         <a href="{{ route('institutes.index') }}" class="text-sm text-indigo-600 hover:text-indigo-800">&larr; Back to institutes</a>
     </div>

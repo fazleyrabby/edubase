@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', $fee->exists ? 'Edit Fee — ILMATLAS Admin' : 'New Fee — ILMATLAS Admin')
+@section('title', $fee->exists ? 'Edit Fee — EduBase Admin' : 'New Fee — EduBase Admin')
 
 @section('content')
 <div class="mb-8">

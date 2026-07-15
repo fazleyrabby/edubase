@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Taxonomies — ILMATLAS Admin')
+@section('title', 'Taxonomies — EduBase Admin')
 
 @section('content')
 <div class="mb-8">

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard — ILMATLAS Admin')
+@section('title', 'Dashboard — EduBase Admin')
 
 @section('content')
     <div class="mb-8">

@@ -2,6 +2,7 @@
 
 namespace App\Modules\Location\Models;
 
+use App\Modules\Institute\Models\Institute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -22,6 +23,11 @@ class Upazila extends Model
         ];
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function district(): BelongsTo
     {
         return $this->belongsTo(District::class);
@@ -30,5 +36,10 @@ class Upazila extends Model
     public function areas(): HasMany
     {
         return $this->hasMany(Area::class);
+    }
+
+    public function institutes(): HasMany
+    {
+        return $this->hasMany(Institute::class);
     }
 }

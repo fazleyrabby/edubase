@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>ILMATLAS Admin Login</title>
+    <title>EduBase Admin Login</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-50 font-sans antialiased">
     <div class="min-h-screen flex items-center justify-center">
         <div class="w-full max-w-md bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-            <h1 class="text-2xl font-bold text-center mb-2">ILMATLAS</h1>
+            <h1 class="text-2xl font-bold text-center mb-2">EduBase</h1>
             <p class="text-sm text-gray-500 text-center mb-6">Admin Panel</p>
 
             @if ($errors->any())

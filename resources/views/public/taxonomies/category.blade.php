@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', "$category->name Institutes — ILMATLAS")
+@section('title', "$category->name Institutes — EduBase")
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 py-8">
