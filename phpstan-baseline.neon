@@ -1,0 +1,7 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Trait App\\Support\\Traits\\Auditable is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: app/Support/Traits/Auditable.php
