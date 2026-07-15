@@ -55,18 +55,35 @@ composer run dev
 - **Email:** admin@edubase.com
 - **Password:** password
 
-## Phase 0 — Foundation
+## Project Roadmap & Status
 
-- [x] Laravel 13 scaffolding + module structure
-- [x] 52 database tables (all migration schemas)
-- [x] Bangladesh administrative hierarchy (8 divisions, 64 districts)
-- [x] Taxonomies: institute types, categories, curriculums, boards, programs
-- [x] RBAC: 6 roles, 47 permissions (Spatie)
-- [x] Admin authentication (Sanctum SPA)
-- [x] Horizon queue supervisors (7 queues)
-- [x] Meilisearch/Scout integration
-- [x] Tailwind v4 + Flowbite admin UI
+- **Phase 0 — Foundation** ✅ COMPLETE (Scaffolding, geographic seeders, taxonomies, RBAC)
+- **Phase 1 — Core Models & Admin Panel** ✅ COMPLETE (Institute, contacts, shifts management screens)
+- **Phase 2 — Admissions & Fees** ✅ COMPLETE (Fee types, fee structures, application deadlines, circulars dashboards)
+- **Phase 3 — Scrapers & Pipeline** ✅ COMPLETE (Scraper adapters, run logs, CSV/JSON parser engine)
+- **Phase 4 — Fee & Admission Moderation** ✅ COMPLETE (Approval pipelines, verified status, moderator actions)
+- **Phase 5 — Public Front-end Listing** ✅ COMPLETE (Faceted search, side-by-side comparison tray, location landing pages)
+- **Phase 6 — Public API & Security** ✅ COMPLETE (19 API endpoints, rate limiting, SecurityHeaders CSP Nonces, Redis caching)
+- **Phase 7 — SEO Metadata Engine** ✅ COMPLETE (Dynamic meta tags mapping, XML sitemaps cron generator)
+- **Phase 8 — User Accounts** ✅ COMPLETE (Profiles dashboard, favorites bookmarks, email watchlists)
+- **Phase 9 — Reviews & Community** ✅ COMPLETE (Star ratings, review moderation, community fee submissions)
+- **Phase 10 — School Portal** ✅ COMPLETE (Ownership claiming, manager editing portal, traffic analytics dashboard)
+
+## Cron / Scheduled Commands
+
+Set the standard system cron to run Laravel schedule (`php artisan schedule:run`) every minute. The following commands are registered:
+
+- **Generate Public XML Sitemaps**: Runs daily at 4:00 AM (`php artisan seo:generate-sitemaps`).
+- **Optimize SEO Metadata Indexes**: Runs weekly on Mondays at 4:30 AM (`php artisan seo:optimize-indexes`).
+
+## Tests Suite
+
+Run all Pest feature tests to verify the integrity of the platform:
+```bash
+php artisan test
+```
 
 ## License
 
 MIT
+
