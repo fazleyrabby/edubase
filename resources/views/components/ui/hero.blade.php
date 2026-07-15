@@ -4,7 +4,7 @@
     'searchAction' => '',
     'color' => 'rgba(128, 128, 128, 1)', // Matches demo.tsx color rgba(128, 128, 128, 1)
     'scale' => 100,
-    'speed' => 90,
+    'speed' => 15,
     'noiseOpacity' => 0.5, // Matches noise.opacity: 1 (noise.opacity / 2 = 0.5)
     'noiseScale' => 1.2,
 ])
