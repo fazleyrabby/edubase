@@ -19,7 +19,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('admin.login.store') }}">
+            <form id="adminLoginForm" method="POST" action="{{ route('admin.login.store') }}">
                 @csrf
                 <div class="space-y-4">
                     <div>
@@ -42,8 +42,7 @@
                         Sign in
                     </button>
                     
-                    <button type="button"
-                        onclick="document.getElementById('email').value='admin@edubase.com'; document.getElementById('password').value='password'; this.form.submit();"
+                    <button type="button" id="quickDemoAdminLoginBtn"
                         class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-lg text-sm font-medium transition duration-150">
                         Quick Demo Login
                     </button>
@@ -51,5 +50,22 @@
             </form>
         </div>
     </div>
+
+    <script @nonce>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('quickDemoAdminLoginBtn');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    const emailInput = document.getElementById('email');
+                    const passwordInput = document.getElementById('password');
+                    if (emailInput && passwordInput) {
+                        emailInput.value = 'admin@edubase.com';
+                        passwordInput.value = 'password';
+                        document.getElementById('adminLoginForm').submit();
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

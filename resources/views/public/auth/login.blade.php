@@ -38,8 +38,7 @@
                 Log In
             </button>
 
-            <button type="button"
-                onclick="document.getElementById('email').value='admin@edubase.com'; document.getElementById('password').value='password'; document.getElementById('loginForm').submit();"
+            <button type="button" id="quickDemoAdminLoginBtn"
                 class="w-full mt-2 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2.5 px-4 rounded-lg text-sm font-medium transition duration-150">
                 Quick Demo Admin Login
             </button>
@@ -50,4 +49,21 @@
         </p>
     </div>
 </div>
+
+<script @nonce>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('quickDemoAdminLoginBtn');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                const emailInput = document.getElementById('email');
+                const passwordInput = document.getElementById('password');
+                if (emailInput && passwordInput) {
+                    emailInput.value = 'admin@edubase.com';
+                    passwordInput.value = 'password';
+                    document.getElementById('loginForm').submit();
+                }
+            });
+        }
+    });
+</script>
 @endsection

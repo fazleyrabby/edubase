@@ -24,7 +24,7 @@ class SecurityHeaders
         $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
         $connectSrc = "connect-src 'self' https:";
         if (app()->environment('local')) {
-            $connectSrc .= ' ws://localhost:* ws://127.0.0.1:* ws://[::1]:* wss://localhost:* wss://127.0.0.1:* wss://[::1]:*';
+            $connectSrc .= ' ws://localhost:* ws://127.0.0.1:* ws://[::1]:5173 wss://localhost:* wss://127.0.0.1:* wss://[::1]:5173';
         }
 
         $response->headers->set('Content-Security-Policy',
