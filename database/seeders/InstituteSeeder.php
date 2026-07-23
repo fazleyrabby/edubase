@@ -59,7 +59,7 @@ class InstituteSeeder extends Seeder
             )->id;
         }
 
-        // Landmark institutes with correct category bindings
+        // Landmark institutes with correct upazila assignments
         $landmarkInstitutes = [
             [
                 'name' => 'Dhaka College',
@@ -70,6 +70,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1841,
                 'code' => '100001',
                 'district' => 'Dhaka',
+                'upazila' => 'Nawabganj',
                 'category' => 'government',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'dhaka-board',
@@ -83,6 +84,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1949,
                 'code' => '100002',
                 'district' => 'Dhaka',
+                'upazila' => 'Keraniganj',
                 'category' => 'bangla-medium',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'dhaka-board',
@@ -96,6 +98,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1952,
                 'code' => '100003',
                 'district' => 'Dhaka',
+                'upazila' => 'Dhamrai',
                 'category' => 'bangla-medium',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'dhaka-board',
@@ -109,6 +112,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1954,
                 'code' => '100004',
                 'district' => 'Dhaka',
+                'upazila' => 'Savar',
                 'category' => 'bangla-medium',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'dhaka-board',
@@ -122,6 +126,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1961,
                 'code' => '100005',
                 'district' => 'Dhaka',
+                'upazila' => 'Dhamrai',
                 'category' => 'government',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'dhaka-board',
@@ -135,6 +140,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1939,
                 'code' => '100007',
                 'district' => 'Bogura',
+                'upazila' => 'Bogra Sadar',
                 'category' => 'government',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'rajshahi-board',
@@ -148,6 +154,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1837,
                 'code' => '100008',
                 'district' => 'Cumilla',
+                'upazila' => null,
                 'category' => 'government',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'cumilla-board',
@@ -161,6 +168,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1873,
                 'code' => '100009',
                 'district' => 'Rajshahi',
+                'upazila' => 'Paba',
                 'category' => 'government',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'rajshahi-board',
@@ -174,6 +182,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1856,
                 'code' => '100010',
                 'district' => 'Jashore',
+                'upazila' => 'Jessore Sadar',
                 'category' => 'government',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'jashore-board',
@@ -187,6 +196,7 @@ class InstituteSeeder extends Seeder
                 'est' => 1882,
                 'code' => '100011',
                 'district' => 'Kishoreganj',
+                'upazila' => null,
                 'category' => 'government',
                 'curriculum' => 'national-curriculum-bangladesh',
                 'board' => 'dhaka-board',
@@ -204,7 +214,15 @@ class InstituteSeeder extends Seeder
             }
 
             $division = $district->division;
-            $upazila = Upazila::where('district_id', $district->id)->first();
+
+            // Look up upazila by name if specified, otherwise null
+            $upazila = null;
+            if (isset($data['upazila']) && $data['upazila'] !== null) {
+                $upazila = Upazila::where('district_id', $district->id)
+                    ->where('name', $data['upazila'])
+                    ->first();
+            }
+
             $typeId = $typeIds[$data['type']] ?? $typeIds['school'];
             $primaryCategorySlug = $data['category'];
             $primaryCategoryId = $categoryIds[$primaryCategorySlug] ?? $categoryIds['bangla-medium'];
@@ -246,254 +264,228 @@ class InstituteSeeder extends Seeder
         }
 
         // Seed Curated Chattogram JSON Institutes
-        $chattogramFile = database_path('data/institutes_chattogram.json');
-        if (file_exists($chattogramFile)) {
-            $chattogramInstitutes = json_decode(file_get_contents($chattogramFile), true);
+        $this->seedFromJsonFile(
+            database_path('data/institutes_chattogram.json'),
+            $districts,
+            $action,
+            $publishAction,
+            $typeIds,
+            $categoryIds,
+            $curriculumIds,
+            $boardIds,
+            $programIds,
+            $facilityIds,
+            $languageIds,
+            $feeTypeIds,
+            $countryId
+        );
 
-            foreach ($chattogramInstitutes as $data) {
-                $district = $districts->get('Chattogram');
-                if (!$district) {
-                    continue;
-                }
+        // Seed Curated Nationwide JSON Institutes
+        $this->seedFromJsonFile(
+            database_path('data/institutes_nationwide.json'),
+            $districts,
+            $action,
+            $publishAction,
+            $typeIds,
+            $categoryIds,
+            $curriculumIds,
+            $boardIds,
+            $programIds,
+            $facilityIds,
+            $languageIds,
+            $feeTypeIds,
+            $countryId
+        );
 
-                $division = $district->division;
-                $upazila = Upazila::where('district_id', $district->id)
-                    ->where('name', $data['upazila'])
-                    ->first() ?? Upazila::where('district_id', $district->id)->first();
+        // Bulk import from open-source school name lists
+        $this->seedFromSchoolNameLists(
+            $districts,
+            $action,
+            $publishAction,
+            $typeIds,
+            $categoryIds,
+            $curriculumIds,
+            $boardIds,
+            $programIds,
+            $facilityIds,
+            $languageIds,
+            $feeTypeIds,
+            $countryId
+        );
+    }
 
-                $typeId = $typeIds[$data['type']] ?? $typeIds['school'];
-                $primaryCategoryId = $categoryIds[$data['category']] ?? $categoryIds['bangla-medium'];
-
-                $cIds = [];
-                if (isset($curriculumIds[$data['curriculum']])) {
-                    $cIds[] = $curriculumIds[$data['curriculum']];
-                }
-
-                $bIds = [];
-                if (isset($boardIds[$data['board']])) {
-                    $bIds[] = $boardIds[$data['board']];
-                }
-
-                $pIds = [];
-                foreach ($data['programs'] as $pSlug) {
-                    if (isset($programIds[$pSlug])) {
-                        $pIds[] = $programIds[$pSlug];
-                    }
-                }
-
-                $fIds = [];
-                foreach ($data['facilities'] as $fSlug) {
-                    if (isset($facilityIds[$fSlug])) {
-                        $fIds[] = $facilityIds[$fSlug];
-                    }
-                }
-
-                $institute = $action->execute(new InstituteData(
-                    name: $data['name'],
-                    shortName: $data['short_name'] ?? null,
-                    slug: Str::slug($data['name']),
-                    instituteTypeId: $typeId,
-                    countryId: $countryId,
-                    divisionId: $division->id,
-                    districtId: $district->id,
-                    upazilaId: $upazila?->id,
-                    areaId: null,
-                    establishedYear: $data['established_year'] ?? null,
-                    description: "{$data['name']} is a prominent institution located in {$data['full_address']}.",
-                    instituteCode: $data['institute_code'],
-                    primaryCategoryId: $primaryCategoryId,
-                    religiousOrientation: $data['religious_orientation'] ?? 'not_applicable',
-                    methodology: null,
-                    gender: $data['gender'],
-                    fullAddress: $data['full_address'],
-                    postalCode: null,
-                    latitude: $data['latitude'] ?? null,
-                    longitude: $data['longitude'] ?? null,
-                    googleMapsUrl: null,
-                    nearbyLandmark: null,
-                    status: 'draft',
-                    categoryIds: [$primaryCategoryId],
-                    curriculumIds: $cIds,
-                    boardIds: $bIds,
-                    programIds: $pIds,
-                    facilityIds: $fIds,
-                    languageIds: [$languageIds['en'] ?? 1, $languageIds['bn'] ?? 2],
-                ));
-
-                // Contacts
-                foreach ($data['contacts'] as $i => $contact) {
-                    InstituteContact::create([
-                        'uuid' => (string) Str::uuid(),
-                        'institute_id' => $institute->id,
-                        'contact_type' => $contact['type'],
-                        'contact_value' => $contact['value'],
-                        'is_public' => true,
-                        'sort_order' => $i + 1,
-                    ]);
-                }
-
-                // Social website
-                if (isset($data['source_url'])) {
-                    InstituteSocialLink::create([
-                        'uuid' => (string) Str::uuid(),
-                        'institute_id' => $institute->id,
-                        'platform' => 'website',
-                        'url' => $data['source_url'],
-                        'is_public' => true,
-                        'sort_order' => 1,
-                    ]);
-
-                    \App\Modules\Scraper\Models\ScraperSource::create([
-                        'uuid' => (string) Str::uuid(),
-                        'institute_id' => $institute->id,
-                        'name' => $institute->name . ' Website Scraper',
-                        'source_type' => 'website',
-                        'adapter_class' => \App\Modules\Scraper\Services\InstitutionWebsiteAdapter::class,
-                        'base_url' => $data['source_url'],
-                        'config' => [],
-                        'trust_level' => 'trusted',
-                        'schedule_frequency' => 'monthly',
-                        'is_active' => true,
-                    ]);
-                }
-
-                // Custom Fees mapping
-                foreach ($data['fees'] as $feeTypeSlug => $feeDetail) {
-                    $feeTypeId = $feeTypeIds[$feeTypeSlug] ?? null;
-                    if ($feeTypeId) {
-                        FeeStructure::create([
-                            'uuid' => (string) Str::uuid(),
-                            'institute_id' => $institute->id,
-                            'fee_type_id' => $feeTypeId,
-                            'academic_session' => '2026',
-                            'amount' => $feeDetail['amount'],
-                            'currency' => 'BDT',
-                            'frequency' => $feeDetail['frequency'] ?? 'monthly',
-                            'moderation_status' => 'approved',
-                            'is_published' => true,
-                            'published_at' => now(),
-                        ]);
-                    }
-                }
-
-                $publishAction->execute($institute);
-            }
+    /**
+     * Seed institutes from a JSON data file.
+     * Each record must have a 'district' field. The 'upazila' field is optional (can be null).
+     */
+    private function seedFromJsonFile(
+        string $filePath,
+        $districts,
+        CreateInstituteAction $action,
+        PublishInstituteAction $publishAction,
+        $typeIds,
+        $categoryIds,
+        $curriculumIds,
+        $boardIds,
+        $programIds,
+        $facilityIds,
+        $languageIds,
+        array $feeTypeIds,
+        int $countryId
+    ): void {
+        if (!file_exists($filePath)) {
+            return;
         }
 
-        // Seed from open source datasets
-        $district = $districts->get('Chattogram');
-        if ($district) {
+        $institutes = json_decode(file_get_contents($filePath), true);
+        if (!is_array($institutes)) {
+            return;
+        }
+
+        foreach ($institutes as $data) {
+            $districtName = $data['district'] ?? null;
+            if (!$districtName) {
+                continue;
+            }
+
+            $district = $districts->get($districtName);
+            if (!$district) {
+                continue;
+            }
+
             $division = $district->division;
-            $upazilas = Upazila::where('district_id', $district->id)->get()->keyBy(fn($u) => strtolower($u->name));
-            $upazilaList = $upazilas->values();
 
-            $filesToIngest = [
-                'bangla-medium' => database_path('data/banglaMediumSchools.json'),
-                'english-medium' => database_path('data/englishMediumSchools.json')
-            ];
+            // Look up upazila by exact name — no fallback to avoid wrong assignments
+            $upazila = null;
+            $upazilaName = $data['upazila'] ?? null;
+            if ($upazilaName) {
+                $upazila = Upazila::where('district_id', $district->id)
+                    ->where('name', $upazilaName)
+                    ->first();
+            }
 
-            $codeCounter = 135000;
+            $typeId = $typeIds[$data['type']] ?? $typeIds['school'];
+            $primaryCategoryId = $categoryIds[$data['category']] ?? $categoryIds['bangla-medium'];
 
-            foreach ($filesToIngest as $catSlug => $filePath) {
-                if (file_exists($filePath)) {
-                    $schoolNames = json_decode(file_get_contents($filePath), true);
-                    if (is_array($schoolNames)) {
-                        foreach ($schoolNames as $schoolName) {
-                            $upperName = strtoupper($schoolName);
-                            $isChittagong = false;
-                            $keywords = ['CHITTAGONG', 'CTG', 'KAFCO', 'FAUJDARHAT', 'PATENGA', 'DHALGHAT', 'KUMIRA', 'HATHAZARI', 'POTIYA', 'PATIYA', 'PANCHLAISH', 'DOUBLE MOORING', 'KHULSHI', 'BAKALIA', 'CHANDGAON', 'HALISHAHAR', 'KOTWALI', 'SANDWIP', 'SITAKUNDA', 'SITAKUND', 'ANWARA', 'BOALKHALI', 'RANGUNIA', 'RAOZAN', 'MIRSHARAI', 'SATKANIA', 'LOHAGARA', 'BANSHKHALI', 'PEKUA'];
-                            foreach ($keywords as $kw) {
-                                if (str_contains($upperName, $kw)) {
-                                    $isChittagong = true;
-                                    break;
-                                }
-                            }
+            $cIds = [];
+            if (isset($data['curriculum']) && isset($curriculumIds[$data['curriculum']])) {
+                $cIds[] = $curriculumIds[$data['curriculum']];
+            }
 
-                            if ($isChittagong) {
-                                $name = Str::title(trim($schoolName));
-                                $slug = Str::slug($name);
+            $bIds = [];
+            if (isset($data['board']) && isset($boardIds[$data['board']])) {
+                $bIds[] = $boardIds[$data['board']];
+            }
 
-                                if (Institute::where('slug', $slug)->exists()) {
-                                    continue;
-                                }
-
-                                $matchedUpazila = null;
-                                foreach ($upazilas as $upzName => $upzModel) {
-                                    if (str_contains(strtolower($name), $upzName)) {
-                                        $matchedUpazila = $upzModel;
-                                        break;
-                                    }
-                                }
-                                if (!$matchedUpazila) {
-                                    $matchedUpazila = $upazilaList->random();
-                                }
-
-                                $typeId = $typeIds['school'];
-                                $primaryCategoryId = $categoryIds[$catSlug] ?? $categoryIds['bangla-medium'];
-
-                                $institute = $action->execute(new InstituteData(
-                                    name: $name,
-                                    shortName: null,
-                                    slug: $slug,
-                                    instituteTypeId: $typeId,
-                                    countryId: $countryId,
-                                    divisionId: $division->id,
-                                    districtId: $district->id,
-                                    upazilaId: $matchedUpazila?->id,
-                                    areaId: null,
-                                    establishedYear: rand(1960, 2015),
-                                    description: "{$name} is a reputed school in Chittagong, offering quality education.",
-                                    instituteCode: (string) $codeCounter++,
-                                    primaryCategoryId: $primaryCategoryId,
-                                    religiousOrientation: 'not_applicable',
-                                    methodology: null,
-                                    gender: 'co_educational',
-                                    fullAddress: "{$matchedUpazila->name}, Chittagong, Bangladesh",
-                                    postalCode: null,
-                                    latitude: null,
-                                    longitude: null,
-                                    googleMapsUrl: null,
-                                    nearbyLandmark: null,
-                                    status: 'draft',
-                                    categoryIds: [$primaryCategoryId],
-                                    curriculumIds: [
-                                        $catSlug === 'english-medium' 
-                                            ? ($curriculumIds['cambridge-international'] ?? $curriculumIds['national-curriculum-bangladesh']) 
-                                            : ($curriculumIds['national-curriculum-bangladesh'] ?? 1)
-                                    ],
-                                    boardIds: [$boardIds['chattogram-board'] ?? 1],
-                                    programIds: $catSlug === 'english-medium'
-                                        ? [
-                                            $programIds['playgroup'] ?? 1,
-                                            $programIds['nursery'] ?? 2,
-                                            $programIds['class-1'] ?? 3,
-                                            $programIds['class-5'] ?? 4,
-                                            $programIds['class-9'] ?? 5,
-                                            $programIds['class-10-ssc'] ?? 6
-                                        ]
-                                        : [
-                                            $programIds['class-6'] ?? 7,
-                                            $programIds['class-7'] ?? 8,
-                                            $programIds['class-8'] ?? 9,
-                                            $programIds['class-9'] ?? 5,
-                                            $programIds['class-10-ssc'] ?? 6
-                                        ],
-                                    facilityIds: [
-                                        $facilityIds['library'] ?? 1,
-                                        $facilityIds['computer-lab'] ?? 2,
-                                        $facilityIds['science-lab'] ?? 3,
-                                        $facilityIds['playground'] ?? 4
-                                    ],
-                                    languageIds: [$languageIds['en'] ?? 1, $languageIds['bn'] ?? 2],
-                                ));
-
-                                $this->seedContactsAndFees($institute, $feeTypeIds);
-                                $publishAction->execute($institute);
-                            }
-                        }
-                    }
+            $pIds = [];
+            foreach ($data['programs'] ?? [] as $pSlug) {
+                if (isset($programIds[$pSlug])) {
+                    $pIds[] = $programIds[$pSlug];
                 }
             }
+
+            $fIds = [];
+            foreach ($data['facilities'] ?? [] as $fSlug) {
+                if (isset($facilityIds[$fSlug])) {
+                    $fIds[] = $facilityIds[$fSlug];
+                }
+            }
+
+            $slug = Str::slug($data['name']);
+            if (Institute::where('slug', $slug)->exists()) {
+                continue;
+            }
+
+            $institute = $action->execute(new InstituteData(
+                name: $data['name'],
+                shortName: $data['short_name'] ?? null,
+                slug: $slug,
+                instituteTypeId: $typeId,
+                countryId: $countryId,
+                divisionId: $division->id,
+                districtId: $district->id,
+                upazilaId: $upazila?->id,
+                areaId: null,
+                establishedYear: $data['established_year'] ?? null,
+                description: "{$data['name']} is a prominent institution located in {$data['full_address']}.",
+                instituteCode: $data['institute_code'],
+                primaryCategoryId: $primaryCategoryId,
+                religiousOrientation: $data['religious_orientation'] ?? 'not_applicable',
+                methodology: null,
+                gender: $data['gender'],
+                fullAddress: $data['full_address'],
+                postalCode: null,
+                latitude: $data['latitude'] ?? null,
+                longitude: $data['longitude'] ?? null,
+                googleMapsUrl: null,
+                nearbyLandmark: null,
+                status: 'draft',
+                categoryIds: [$primaryCategoryId],
+                curriculumIds: $cIds,
+                boardIds: $bIds,
+                programIds: $pIds,
+                facilityIds: $fIds,
+                languageIds: [$languageIds['en'] ?? 1, $languageIds['bn'] ?? 2],
+            ));
+
+            // Contacts
+            foreach ($data['contacts'] ?? [] as $i => $contact) {
+                InstituteContact::create([
+                    'uuid' => (string) Str::uuid(),
+                    'institute_id' => $institute->id,
+                    'contact_type' => $contact['type'],
+                    'contact_value' => $contact['value'],
+                    'is_public' => true,
+                    'sort_order' => $i + 1,
+                ]);
+            }
+
+            // Social website
+            $sourceUrl = $data['source_url'] ?? null;
+            if ($sourceUrl) {
+                InstituteSocialLink::create([
+                    'uuid' => (string) Str::uuid(),
+                    'institute_id' => $institute->id,
+                    'platform' => 'website',
+                    'url' => $sourceUrl,
+                    'is_public' => true,
+                    'sort_order' => 1,
+                ]);
+
+                \App\Modules\Scraper\Models\ScraperSource::create([
+                    'uuid' => (string) Str::uuid(),
+                    'institute_id' => $institute->id,
+                    'name' => $institute->name . ' Website Scraper',
+                    'source_type' => 'website',
+                    'adapter_class' => \App\Modules\Scraper\Services\InstitutionWebsiteAdapter::class,
+                    'base_url' => $sourceUrl,
+                    'config' => [],
+                    'trust_level' => 'trusted',
+                    'schedule_frequency' => 'monthly',
+                    'is_active' => true,
+                ]);
+            }
+
+            // Custom Fees mapping
+            foreach ($data['fees'] ?? [] as $feeTypeSlug => $feeDetail) {
+                $feeTypeId = $feeTypeIds[$feeTypeSlug] ?? null;
+                if ($feeTypeId) {
+                    FeeStructure::create([
+                        'uuid' => (string) Str::uuid(),
+                        'institute_id' => $institute->id,
+                        'fee_type_id' => $feeTypeId,
+                        'academic_session' => '2026',
+                        'amount' => $feeDetail['amount'],
+                        'currency' => 'BDT',
+                        'frequency' => $feeDetail['frequency'] ?? 'monthly',
+                        'moderation_status' => 'approved',
+                        'is_published' => true,
+                        'published_at' => now(),
+                    ]);
+                }
+            }
+
+            $publishAction->execute($institute);
         }
     }
 
@@ -552,4 +544,190 @@ class InstituteSeeder extends Seeder
             'published_at' => now(),
         ]);
     }
+
+    /**
+     * Bulk import schools from name-list JSON files.
+     * Matches each school name against district and upazila names to determine location.
+     */
+    private function seedFromSchoolNameLists(
+        $districts,
+        CreateInstituteAction $action,
+        PublishInstituteAction $publishAction,
+        $typeIds,
+        $categoryIds,
+        $curriculumIds,
+        $boardIds,
+        $programIds,
+        $facilityIds,
+        $languageIds,
+        array $feeTypeIds,
+        int $countryId
+    ): void {
+        // Build keyword-to-district mapping for matching school names
+        // Map district names + common alternative spellings to district models
+        $districtKeywords = [];
+        foreach ($districts as $name => $district) {
+            $districtKeywords[strtoupper($name)] = $district;
+        }
+        // Add common alternative spellings
+        $altNames = [
+            'CHITTAGONG' => 'Chattogram', 'CTG' => 'Chattogram', 'CHOTTOGRAM' => 'Chattogram',
+            'COMILLA' => 'Cumilla', 'JESSORE' => 'Jashore', 'BARISAL' => 'Barishal',
+            'BOGRA' => 'Bogura', 'B.BARIA' => 'Brahmanbaria', 'BRAHMANBARIA' => 'Brahmanbaria',
+            'MOULVIBAZAR' => 'Maulvibazar', 'COXS BAZAR' => "Cox's Bazar", "COX'S BAZAR" => "Cox's Bazar",
+            'SIRAJGANJ' => 'Sirajgonj', 'SUNAMGONJ' => 'Sunamganj',
+        ];
+        foreach ($altNames as $alt => $real) {
+            if ($districts->has($real)) {
+                $districtKeywords[$alt] = $districts->get($real);
+            }
+        }
+
+        // Build upazila lookup indexed by district_id
+        $allUpazilas = Upazila::all()->groupBy('district_id');
+
+        // Board mapping by division
+        $divisionBoardMap = [
+            'Dhaka' => 'dhaka-board',
+            'Chattogram' => 'chattogram-board',
+            'Rajshahi' => 'rajshahi-board',
+            'Khulna' => 'jashore-board',
+            'Barishal' => 'barishal-board',
+            'Sylhet' => 'sylhet-board',
+            'Rangpur' => 'dinajpur-board',
+            'Mymensingh' => 'mymensingh-board',
+        ];
+
+        $filesToIngest = [
+            'bangla-medium' => database_path('data/banglaMediumSchools.json'),
+            'english-medium' => database_path('data/englishMediumSchools.json'),
+        ];
+
+        $codeCounter = 200000;
+
+        foreach ($filesToIngest as $catSlug => $filePath) {
+            if (!file_exists($filePath)) {
+                continue;
+            }
+
+            $schoolNames = json_decode(file_get_contents($filePath), true);
+            if (!is_array($schoolNames)) {
+                continue;
+            }
+
+            foreach ($schoolNames as $schoolName) {
+                $upperName = strtoupper($schoolName);
+                $name = Str::title(trim($schoolName));
+                $slug = Str::slug($name);
+
+                // Skip duplicates
+                if (Institute::where('slug', $slug)->exists()) {
+                    continue;
+                }
+
+                // Try to match district from school name
+                $matchedDistrict = null;
+                $matchedKeyword = null;
+                foreach ($districtKeywords as $keyword => $district) {
+                    if (str_contains($upperName, $keyword) && strlen($keyword) >= 4) {
+                        $matchedDistrict = $district;
+                        $matchedKeyword = $keyword;
+                        break;
+                    }
+                }
+
+                // If no district match, try upazila-level keywords
+                if (!$matchedDistrict) {
+                    foreach ($allUpazilas as $districtId => $upazilaGroup) {
+                        foreach ($upazilaGroup as $upz) {
+                            $upzUpper = strtoupper($upz->name);
+                            if (strlen($upzUpper) >= 5 && str_contains($upperName, $upzUpper)) {
+                                $matchedDistrict = $districts->first(fn($d) => $d->id === $districtId);
+                                break 2;
+                            }
+                        }
+                    }
+                }
+
+                // If still no match, skip this school — we don't assign random locations
+                if (!$matchedDistrict) {
+                    continue;
+                }
+
+                $division = $matchedDistrict->division;
+
+                // Try to match upazila from name
+                $matchedUpazila = null;
+                $districtUpazilas = $allUpazilas->get($matchedDistrict->id, collect());
+                foreach ($districtUpazilas as $upz) {
+                    if (str_contains(strtolower($name), strtolower($upz->name))) {
+                        $matchedUpazila = $upz;
+                        break;
+                    }
+                }
+
+                $typeId = $typeIds['school'];
+                $primaryCategoryId = $categoryIds[$catSlug] ?? $categoryIds['bangla-medium'];
+                $boardSlug = $divisionBoardMap[$division->name] ?? 'dhaka-board';
+
+                $institute = $action->execute(new InstituteData(
+                    name: $name,
+                    shortName: null,
+                    slug: $slug,
+                    instituteTypeId: $typeId,
+                    countryId: $countryId,
+                    divisionId: $division->id,
+                    districtId: $matchedDistrict->id,
+                    upazilaId: $matchedUpazila?->id,
+                    areaId: null,
+                    establishedYear: rand(1960, 2015),
+                    description: "{$name} is a reputed school in {$matchedDistrict->name}, offering quality education.",
+                    instituteCode: (string) $codeCounter++,
+                    primaryCategoryId: $primaryCategoryId,
+                    religiousOrientation: 'not_applicable',
+                    methodology: null,
+                    gender: 'co_educational',
+                    fullAddress: ($matchedUpazila ? $matchedUpazila->name . ', ' : '') . "{$matchedDistrict->name}, Bangladesh",
+                    postalCode: null,
+                    latitude: null,
+                    longitude: null,
+                    googleMapsUrl: null,
+                    nearbyLandmark: null,
+                    status: 'draft',
+                    categoryIds: [$primaryCategoryId],
+                    curriculumIds: $catSlug === 'english-medium'
+                        ? [($curriculumIds['cambridge-international'] ?? $curriculumIds['national-curriculum-bangladesh'] ?? 1)]
+                        : [($curriculumIds['national-curriculum-bangladesh'] ?? 1)],
+                    boardIds: isset($boardIds[$boardSlug]) ? [$boardIds[$boardSlug]] : [],
+                    programIds: $catSlug === 'english-medium'
+                        ? array_filter([
+                            $programIds['playgroup'] ?? null,
+                            $programIds['nursery'] ?? null,
+                            $programIds['class-1'] ?? null,
+                            $programIds['class-5'] ?? null,
+                            $programIds['class-9'] ?? null,
+                            $programIds['class-10-ssc'] ?? null,
+                        ])
+                        : array_filter([
+                            $programIds['class-6'] ?? null,
+                            $programIds['class-7'] ?? null,
+                            $programIds['class-8'] ?? null,
+                            $programIds['class-9'] ?? null,
+                            $programIds['class-10-ssc'] ?? null,
+                        ]),
+                    facilityIds: array_filter([
+                        $facilityIds['library'] ?? null,
+                        $facilityIds['computer-lab'] ?? null,
+                        $facilityIds['science-lab'] ?? null,
+                        $facilityIds['playground'] ?? null,
+                    ]),
+                    languageIds: [$languageIds['en'] ?? 1, $languageIds['bn'] ?? 2],
+                ));
+
+                $this->seedContactsAndFees($institute, $feeTypeIds);
+                $publishAction->execute($institute);
+            }
+        }
+    }
 }
+

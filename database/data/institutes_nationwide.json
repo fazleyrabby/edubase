@@ -1,0 +1,1133 @@
+[
+  {
+    "name": "Govt. Laboratory High School, Dhaka",
+    "short_name": "GLHS",
+    "institute_code": "108331",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dhaka-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1961,
+    "district": "Dhaka",
+    "upazila": "Dhamrai",
+    "full_address": "Dhanmondi, Dhaka",
+    "latitude": 23.7371,
+    "longitude": 90.3742,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880248611782" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 200, "frequency": "monthly" },
+      "admission-fee": { "amount": 2000, "frequency": "one_time" },
+      "session-fee": { "amount": 2500, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Motijheel Ideal School & College",
+    "short_name": "MISC",
+    "institute_code": "108201",
+    "type": "school",
+    "category": "bangla-medium",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dhaka-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1965,
+    "district": "Dhaka",
+    "upazila": "Keraniganj",
+    "full_address": "Motijheel, Dhaka",
+    "latitude": 23.7340,
+    "longitude": 90.4170,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-1", "class-5", "class-6", "class-9", "class-10-ssc", "class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium"],
+    "contacts": [
+      { "type": "phone", "value": "+880249360001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 500, "frequency": "monthly" },
+      "admission-fee": { "amount": 5000, "frequency": "one_time" },
+      "session-fee": { "amount": 3000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Rajuk Uttara Model College",
+    "short_name": "RUMC",
+    "institute_code": "108451",
+    "type": "school",
+    "category": "bangla-medium",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dhaka-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1994,
+    "district": "Dhaka",
+    "upazila": "Savar",
+    "full_address": "Uttara, Dhaka",
+    "latitude": 23.8612,
+    "longitude": 90.3960,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-1", "class-5", "class-6", "class-9", "class-10-ssc", "class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium", "canteen", "cctv"],
+    "contacts": [
+      { "type": "phone", "value": "+880248955101" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 800, "frequency": "monthly" },
+      "admission-fee": { "amount": 8000, "frequency": "one_time" },
+      "session-fee": { "amount": 4000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Holy Cross Girls' High School",
+    "short_name": "HCGHS",
+    "institute_code": "108502",
+    "type": "school",
+    "category": "bangla-medium",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dhaka-board",
+    "gender": "girls",
+    "religious_orientation": "christianity",
+    "established_year": 1951,
+    "district": "Dhaka",
+    "upazila": "Nawabganj",
+    "full_address": "Tejgaon, Dhaka",
+    "latitude": 23.7605,
+    "longitude": 90.3930,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-1", "class-5", "class-6", "class-9", "class-10-ssc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "first-aid-room"],
+    "contacts": [
+      { "type": "phone", "value": "+880248110022" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 350, "frequency": "monthly" },
+      "admission-fee": { "amount": 3000, "frequency": "one_time" },
+      "session-fee": { "amount": 2000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "University of Dhaka",
+    "short_name": "DU",
+    "institute_code": "108901",
+    "type": "university",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dhaka-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1921,
+    "district": "Dhaka",
+    "upazila": "Dohar",
+    "full_address": "Ramna, Dhaka 1000",
+    "latitude": 23.7340,
+    "longitude": 90.3927,
+    "source_url": "https://www.du.ac.bd/",
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium", "canteen", "gymnasium", "swimming-pool"],
+    "contacts": [
+      { "type": "phone", "value": "+880029661900" },
+      { "type": "email", "value": "registrar@du.ac.bd" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 500, "frequency": "monthly" },
+      "admission-fee": { "amount": 12000, "frequency": "one_time" }
+    }
+  },
+  {
+    "name": "Gazipur Cantonment Public School & College",
+    "short_name": "GCPSC",
+    "institute_code": "109101",
+    "type": "school",
+    "category": "bangla-medium",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dhaka-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1983,
+    "district": "Gazipur",
+    "upazila": "Gazipur Sadar",
+    "full_address": "Cantonment, Gazipur Sadar, Gazipur",
+    "latitude": 23.9908,
+    "longitude": 90.4118,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-1", "class-5", "class-6", "class-9", "class-10-ssc", "class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "canteen"],
+    "contacts": [
+      { "type": "phone", "value": "+880249262001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 600, "frequency": "monthly" },
+      "admission-fee": { "amount": 5000, "frequency": "one_time" },
+      "session-fee": { "amount": 3000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Tongi Govt. High School",
+    "short_name": "TGHS",
+    "institute_code": "109102",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dhaka-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1955,
+    "district": "Gazipur",
+    "upazila": "Tongi",
+    "full_address": "Tongi, Gazipur",
+    "latitude": 23.8877,
+    "longitude": 90.4040,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880249811002" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1000, "frequency": "one_time" },
+      "session-fee": { "amount": 1500, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Narayanganj Govt. High School",
+    "short_name": "NGHS",
+    "institute_code": "109201",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dhaka-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1885,
+    "district": "Narayanganj",
+    "upazila": "Narayanganj Sadar",
+    "full_address": "Narayanganj Sadar, Narayanganj",
+    "latitude": 23.6238,
+    "longitude": 90.4968,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880276460012" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 200, "frequency": "monthly" },
+      "admission-fee": { "amount": 1500, "frequency": "one_time" },
+      "session-fee": { "amount": 2000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Tangail Govt. High School",
+    "short_name": "TaGHS",
+    "institute_code": "109301",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dhaka-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1886,
+    "district": "Tangail",
+    "upazila": "Tangail Sadar",
+    "full_address": "Tangail Sadar, Tangail",
+    "latitude": 24.2513,
+    "longitude": 89.9163,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880292151001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1000, "frequency": "one_time" },
+      "session-fee": { "amount": 1500, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Rajshahi Collegiate School",
+    "short_name": "RCS",
+    "institute_code": "110101",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "rajshahi-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1828,
+    "district": "Rajshahi",
+    "upazila": "Paba",
+    "full_address": "Boalia, Rajshahi Sadar, Rajshahi",
+    "latitude": 24.3745,
+    "longitude": 88.5997,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium"],
+    "contacts": [
+      { "type": "phone", "value": "+880721770021" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1200, "frequency": "one_time" },
+      "session-fee": { "amount": 1800, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "University of Rajshahi",
+    "short_name": "RU",
+    "institute_code": "110901",
+    "type": "university",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "rajshahi-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1953,
+    "district": "Rajshahi",
+    "upazila": "Paba",
+    "full_address": "Motihar, Rajshahi",
+    "latitude": 24.3690,
+    "longitude": 88.6285,
+    "source_url": "https://www.ru.ac.bd/",
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium", "canteen", "gymnasium"],
+    "contacts": [
+      { "type": "phone", "value": "+880721750041" },
+      { "type": "email", "value": "registrar@ru.ac.bd" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 400, "frequency": "monthly" },
+      "admission-fee": { "amount": 10000, "frequency": "one_time" }
+    }
+  },
+  {
+    "name": "Rajshahi Cadet College",
+    "short_name": "RCC",
+    "institute_code": "110301",
+    "type": "cadet-college",
+    "category": "cadet",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "rajshahi-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1966,
+    "district": "Rajshahi",
+    "upazila": "Godagari",
+    "full_address": "Sardah, Godagari, Rajshahi",
+    "latitude": 24.4667,
+    "longitude": 88.3833,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-7", "class-8", "class-9", "class-10-ssc", "class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "swimming-pool", "gymnasium"],
+    "contacts": [
+      { "type": "phone", "value": "+880721860010" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 1500, "frequency": "monthly" },
+      "admission-fee": { "amount": 10000, "frequency": "one_time" },
+      "session-fee": { "amount": 5000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Bogura Zilla School",
+    "short_name": "BZS",
+    "institute_code": "110201",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "rajshahi-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1854,
+    "district": "Bogura",
+    "upazila": "Bogra Sadar",
+    "full_address": "Bogura Sadar, Bogura",
+    "latitude": 24.8465,
+    "longitude": 89.3725,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880581765001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1000, "frequency": "one_time" },
+      "session-fee": { "amount": 1500, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Bogura Polytechnic Institute",
+    "short_name": "BPI",
+    "institute_code": "110401",
+    "type": "polytechnic",
+    "category": "technical-vocational",
+    "curriculum": "bteb",
+    "board": "bteb",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1962,
+    "district": "Bogura",
+    "upazila": "Bogra Sadar",
+    "full_address": "Polytechnic Road, Bogura Sadar, Bogura",
+    "latitude": 24.8490,
+    "longitude": 89.3770,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880581766001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1000, "frequency": "one_time" },
+      "session-fee": { "amount": 1200, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Natore Govt. High School",
+    "short_name": "NaGHS",
+    "institute_code": "110501",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "rajshahi-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1869,
+    "district": "Natore",
+    "upazila": "Natore Sadar",
+    "full_address": "Natore Sadar, Natore",
+    "latitude": 24.4207,
+    "longitude": 88.9967,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880771162001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 120, "frequency": "monthly" },
+      "admission-fee": { "amount": 800, "frequency": "one_time" },
+      "session-fee": { "amount": 1200, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Khulna Zilla School",
+    "short_name": "KZS",
+    "institute_code": "111101",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "jashore-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1856,
+    "district": "Khulna",
+    "upazila": "Rupsa",
+    "full_address": "Khulna City, Khulna",
+    "latitude": 22.8098,
+    "longitude": 89.5645,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880412810001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1200, "frequency": "one_time" },
+      "session-fee": { "amount": 1800, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Khulna University",
+    "short_name": "KU",
+    "institute_code": "111901",
+    "type": "university",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "jashore-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1991,
+    "district": "Khulna",
+    "upazila": "Batiaghata",
+    "full_address": "Gollamari, Khulna",
+    "latitude": 22.8028,
+    "longitude": 89.5310,
+    "source_url": "https://ku.ac.bd/",
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium", "canteen"],
+    "contacts": [
+      { "type": "phone", "value": "+880412811001" },
+      { "type": "email", "value": "registrar@ku.ac.bd" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 400, "frequency": "monthly" },
+      "admission-fee": { "amount": 8000, "frequency": "one_time" }
+    }
+  },
+  {
+    "name": "Khulna Model School & College",
+    "short_name": "KMSC",
+    "institute_code": "111201",
+    "type": "school",
+    "category": "bangla-medium",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "jashore-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1990,
+    "district": "Khulna",
+    "upazila": "Dumuria",
+    "full_address": "Khulna City, Khulna",
+    "latitude": 22.8150,
+    "longitude": 89.5500,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-1", "class-5", "class-6", "class-9", "class-10-ssc", "class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "canteen"],
+    "contacts": [
+      { "type": "phone", "value": "+880412812001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 500, "frequency": "monthly" },
+      "admission-fee": { "amount": 5000, "frequency": "one_time" },
+      "session-fee": { "amount": 3000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Jashore Collectorate School",
+    "short_name": "JCS",
+    "institute_code": "111301",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "jashore-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1866,
+    "district": "Jashore",
+    "upazila": "Jessore Sadar",
+    "full_address": "Jessore Sadar, Jashore",
+    "latitude": 23.1665,
+    "longitude": 89.2089,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880421168001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1000, "frequency": "one_time" },
+      "session-fee": { "amount": 1500, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Kushtia Govt. College",
+    "short_name": "KGC",
+    "institute_code": "111401",
+    "type": "college",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "jashore-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1947,
+    "district": "Kushtia",
+    "upazila": "Kushtia Sadar",
+    "full_address": "Kushtia Sadar, Kushtia",
+    "latitude": 23.9010,
+    "longitude": 89.1233,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium"],
+    "contacts": [
+      { "type": "phone", "value": "+880711162001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 250, "frequency": "monthly" },
+      "admission-fee": { "amount": 2000, "frequency": "one_time" },
+      "session-fee": { "amount": 2500, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Islamic University, Kushtia",
+    "short_name": "IU",
+    "institute_code": "111902",
+    "type": "university",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "jashore-board",
+    "gender": "co_educational",
+    "religious_orientation": "islamic",
+    "established_year": 1979,
+    "district": "Kushtia",
+    "upazila": "Kushtia Sadar",
+    "full_address": "Shantidanga-Dulalpur, Kushtia",
+    "latitude": 23.7295,
+    "longitude": 89.1527,
+    "source_url": "https://www.iu.ac.bd/",
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium", "canteen"],
+    "contacts": [
+      { "type": "phone", "value": "+880711162002" },
+      { "type": "email", "value": "registrar@iu.ac.bd" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 350, "frequency": "monthly" },
+      "admission-fee": { "amount": 8000, "frequency": "one_time" }
+    }
+  },
+  {
+    "name": "Barishal Zilla School",
+    "short_name": "BrZS",
+    "institute_code": "112101",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "barishal-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1834,
+    "district": "Barishal",
+    "upazila": "Barisal Sadar",
+    "full_address": "Barisal Sadar, Barishal",
+    "latitude": 22.7010,
+    "longitude": 90.3535,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880431163001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 120, "frequency": "monthly" },
+      "admission-fee": { "amount": 800, "frequency": "one_time" },
+      "session-fee": { "amount": 1200, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Barishal Cadet College",
+    "short_name": "BCC",
+    "institute_code": "112301",
+    "type": "cadet-college",
+    "category": "cadet",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "barishal-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1981,
+    "district": "Barishal",
+    "upazila": "Babuganj",
+    "full_address": "Rahmatpur, Babuganj, Barishal",
+    "latitude": 22.6743,
+    "longitude": 90.3388,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-7", "class-8", "class-9", "class-10-ssc", "class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "swimming-pool", "gymnasium"],
+    "contacts": [
+      { "type": "phone", "value": "+880431163002" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 1500, "frequency": "monthly" },
+      "admission-fee": { "amount": 10000, "frequency": "one_time" },
+      "session-fee": { "amount": 5000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Barishal Govt. Girls' High School",
+    "short_name": "BGGHS",
+    "institute_code": "112201",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "barishal-board",
+    "gender": "girls",
+    "religious_orientation": "not_applicable",
+    "established_year": 1925,
+    "district": "Barishal",
+    "upazila": "Barisal Sadar",
+    "full_address": "Barisal Sadar, Barishal",
+    "latitude": 22.7025,
+    "longitude": 90.3540,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground", "first-aid-room"],
+    "contacts": [
+      { "type": "phone", "value": "+880431164001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 100, "frequency": "monthly" },
+      "admission-fee": { "amount": 700, "frequency": "one_time" },
+      "session-fee": { "amount": 1000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Patuakhali Govt. College",
+    "short_name": "PGC",
+    "institute_code": "112401",
+    "type": "college",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "barishal-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1959,
+    "district": "Patuakhali",
+    "upazila": "Patuakhali Sadar",
+    "full_address": "Patuakhali Sadar, Patuakhali",
+    "latitude": 22.3535,
+    "longitude": 90.3276,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880441163001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 200, "frequency": "monthly" },
+      "admission-fee": { "amount": 1500, "frequency": "one_time" },
+      "session-fee": { "amount": 2000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Sylhet Govt. Pilot High School",
+    "short_name": "SGPHS",
+    "institute_code": "113101",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "sylhet-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1897,
+    "district": "Sylhet",
+    "upazila": "Sylhet Sadar",
+    "full_address": "Sylhet Sadar, Sylhet",
+    "latitude": 24.8949,
+    "longitude": 91.8711,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880821713001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1200, "frequency": "one_time" },
+      "session-fee": { "amount": 1800, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Shahjalal University of Science & Technology",
+    "short_name": "SUST",
+    "institute_code": "113901",
+    "type": "university",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "sylhet-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1991,
+    "district": "Sylhet",
+    "upazila": "Sylhet Sadar",
+    "full_address": "Akhalia, Sylhet",
+    "latitude": 24.9107,
+    "longitude": 91.8380,
+    "source_url": "https://www.sust.edu/",
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium", "canteen"],
+    "contacts": [
+      { "type": "phone", "value": "+880821713002" },
+      { "type": "email", "value": "registrar@sust.edu" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 400, "frequency": "monthly" },
+      "admission-fee": { "amount": 10000, "frequency": "one_time" }
+    }
+  },
+  {
+    "name": "Sylhet Cadet College",
+    "short_name": "SCC",
+    "institute_code": "113301",
+    "type": "cadet-college",
+    "category": "cadet",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "sylhet-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1978,
+    "district": "Sylhet",
+    "upazila": "Sylhet Sadar",
+    "full_address": "Sylhet Sadar, Sylhet",
+    "latitude": 24.8900,
+    "longitude": 91.8600,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-7", "class-8", "class-9", "class-10-ssc", "class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "swimming-pool", "gymnasium"],
+    "contacts": [
+      { "type": "phone", "value": "+880821714001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 1500, "frequency": "monthly" },
+      "admission-fee": { "amount": 10000, "frequency": "one_time" },
+      "session-fee": { "amount": 5000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Habiganj Govt. High School",
+    "short_name": "HGHS",
+    "institute_code": "113201",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "sylhet-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1890,
+    "district": "Habiganj",
+    "upazila": "Habiganj Sadar",
+    "full_address": "Habiganj Sadar, Habiganj",
+    "latitude": 24.3770,
+    "longitude": 91.4153,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880831162001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 120, "frequency": "monthly" },
+      "admission-fee": { "amount": 800, "frequency": "one_time" },
+      "session-fee": { "amount": 1200, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Rangpur Zilla School",
+    "short_name": "RpZS",
+    "institute_code": "114101",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dinajpur-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1862,
+    "district": "Rangpur",
+    "upazila": "Rangpur Sadar",
+    "full_address": "Rangpur Sadar, Rangpur",
+    "latitude": 25.7439,
+    "longitude": 89.2752,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880521163001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1000, "frequency": "one_time" },
+      "session-fee": { "amount": 1500, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Carmichael College, Rangpur",
+    "short_name": "CC",
+    "institute_code": "114201",
+    "type": "college",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dinajpur-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1916,
+    "district": "Rangpur",
+    "upazila": "Rangpur Sadar",
+    "full_address": "Rangpur Sadar, Rangpur",
+    "latitude": 25.7560,
+    "longitude": 89.2600,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium"],
+    "contacts": [
+      { "type": "phone", "value": "+880521164001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 250, "frequency": "monthly" },
+      "admission-fee": { "amount": 2000, "frequency": "one_time" },
+      "session-fee": { "amount": 2500, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Begum Rokeya University, Rangpur",
+    "short_name": "BRUR",
+    "institute_code": "114901",
+    "type": "university",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dinajpur-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 2008,
+    "district": "Rangpur",
+    "upazila": "Rangpur Sadar",
+    "full_address": "Airport Road, Rangpur Sadar, Rangpur",
+    "latitude": 25.7580,
+    "longitude": 89.2420,
+    "source_url": "https://www.brur.ac.bd/",
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium", "canteen"],
+    "contacts": [
+      { "type": "phone", "value": "+880521165001" },
+      { "type": "email", "value": "registrar@brur.ac.bd" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 350, "frequency": "monthly" },
+      "admission-fee": { "amount": 8000, "frequency": "one_time" }
+    }
+  },
+  {
+    "name": "Rangpur Cadet College",
+    "short_name": "RpCC",
+    "institute_code": "114301",
+    "type": "cadet-college",
+    "category": "cadet",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dinajpur-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1979,
+    "district": "Rangpur",
+    "upazila": "Pirgachha",
+    "full_address": "Pirgachha, Rangpur",
+    "latitude": 25.8100,
+    "longitude": 89.2800,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-7", "class-8", "class-9", "class-10-ssc", "class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "swimming-pool", "gymnasium"],
+    "contacts": [
+      { "type": "phone", "value": "+880521166001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 1500, "frequency": "monthly" },
+      "admission-fee": { "amount": 10000, "frequency": "one_time" },
+      "session-fee": { "amount": 5000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Dinajpur Govt. High School",
+    "short_name": "DGHS",
+    "institute_code": "114501",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dinajpur-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1854,
+    "district": "Dinajpur",
+    "upazila": "Dinajpur Sadar",
+    "full_address": "Dinajpur Sadar, Dinajpur",
+    "latitude": 25.6275,
+    "longitude": 88.6378,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880531164001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 120, "frequency": "monthly" },
+      "admission-fee": { "amount": 800, "frequency": "one_time" },
+      "session-fee": { "amount": 1200, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Haji Mohammad Danesh Science & Technology University",
+    "short_name": "HSTU",
+    "institute_code": "114902",
+    "type": "university",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "dinajpur-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1999,
+    "district": "Dinajpur",
+    "upazila": "Dinajpur Sadar",
+    "full_address": "Basherhat, Dinajpur Sadar, Dinajpur",
+    "latitude": 25.6250,
+    "longitude": 88.6300,
+    "source_url": "https://www.hstu.ac.bd/",
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium", "canteen"],
+    "contacts": [
+      { "type": "phone", "value": "+880531165001" },
+      { "type": "email", "value": "registrar@hstu.ac.bd" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 400, "frequency": "monthly" },
+      "admission-fee": { "amount": 8000, "frequency": "one_time" }
+    }
+  },
+  {
+    "name": "Mymensingh Zilla School",
+    "short_name": "MZS",
+    "institute_code": "115101",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "mymensingh-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1846,
+    "district": "Mymensingh",
+    "upazila": "Mymensingh Sadar",
+    "full_address": "Mymensingh Sadar, Mymensingh",
+    "latitude": 24.7471,
+    "longitude": 90.4203,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880911167001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 150, "frequency": "monthly" },
+      "admission-fee": { "amount": 1000, "frequency": "one_time" },
+      "session-fee": { "amount": 1500, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Bangladesh Agricultural University",
+    "short_name": "BAU",
+    "institute_code": "115901",
+    "type": "university",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "mymensingh-board",
+    "gender": "co_educational",
+    "religious_orientation": "not_applicable",
+    "established_year": 1961,
+    "district": "Mymensingh",
+    "upazila": "Mymensingh Sadar",
+    "full_address": "BAU Campus, Mymensingh",
+    "latitude": 24.7230,
+    "longitude": 90.4260,
+    "source_url": "https://bau.edu.bd/",
+    "verification_status": "estimated",
+    "programs": ["class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "auditorium", "canteen", "gymnasium"],
+    "contacts": [
+      { "type": "phone", "value": "+880911167002" },
+      { "type": "email", "value": "registrar@bau.edu.bd" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 350, "frequency": "monthly" },
+      "admission-fee": { "amount": 10000, "frequency": "one_time" }
+    }
+  },
+  {
+    "name": "Mymensingh Girls' Cadet College",
+    "short_name": "MGCC",
+    "institute_code": "115301",
+    "type": "cadet-college",
+    "category": "cadet",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "mymensingh-board",
+    "gender": "girls",
+    "religious_orientation": "not_applicable",
+    "established_year": 2006,
+    "district": "Mymensingh",
+    "upazila": "Mymensingh Sadar",
+    "full_address": "Mymensingh Sadar, Mymensingh",
+    "latitude": 24.7500,
+    "longitude": 90.4100,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-7", "class-8", "class-9", "class-10-ssc", "class-11", "class-12-hsc"],
+    "facilities": ["library", "computer-lab", "science-lab", "playground", "swimming-pool", "gymnasium"],
+    "contacts": [
+      { "type": "phone", "value": "+880911168001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 1500, "frequency": "monthly" },
+      "admission-fee": { "amount": 10000, "frequency": "one_time" },
+      "session-fee": { "amount": 5000, "frequency": "yearly" }
+    }
+  },
+  {
+    "name": "Netrokona Govt. High School",
+    "short_name": "NetGHS",
+    "institute_code": "115201",
+    "type": "school",
+    "category": "government",
+    "curriculum": "national-curriculum-bangladesh",
+    "board": "mymensingh-board",
+    "gender": "boys",
+    "religious_orientation": "not_applicable",
+    "established_year": 1898,
+    "district": "Netrokona",
+    "upazila": "Netrokona Sadar",
+    "full_address": "Netrokona Sadar, Netrokona",
+    "latitude": 24.8700,
+    "longitude": 90.7286,
+    "source_url": null,
+    "verification_status": "estimated",
+    "programs": ["class-6", "class-7", "class-8", "class-9", "class-10-ssc"],
+    "facilities": ["library", "science-lab", "playground"],
+    "contacts": [
+      { "type": "phone", "value": "+880951161001" }
+    ],
+    "fees": {
+      "monthly-tuition": { "amount": 120, "frequency": "monthly" },
+      "admission-fee": { "amount": 700, "frequency": "one_time" },
+      "session-fee": { "amount": 1000, "frequency": "yearly" }
+    }
+  }
+]
