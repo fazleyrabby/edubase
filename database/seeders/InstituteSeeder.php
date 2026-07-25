@@ -207,6 +207,11 @@ class InstituteSeeder extends Seeder
 
         // Seed Landmark Institutes
         foreach ($landmarkInstitutes as $data) {
+            $slug = Str::slug($data['name']);
+            if (Institute::where('slug', $slug)->exists()) {
+                continue;
+            }
+
             $districtName = $data['district'] === 'Jashore' ? 'Jashore' : ($data['district'] === 'Cumilla' ? 'Cumilla' : $data['district']);
             $district = $districts->get($districtName);
             if (!$district) {
