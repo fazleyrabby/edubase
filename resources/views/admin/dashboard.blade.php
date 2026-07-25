@@ -11,15 +11,15 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div class="bg-white rounded-xl border border-gray-200 p-6">
             <p class="text-sm text-gray-500">Total Institutes</p>
-            <p class="text-3xl font-bold text-gray-900 mt-1">0</p>
+            <p class="text-3xl font-bold text-gray-900 mt-1">{{ $totalInstitutes }}</p>
         </div>
         <div class="bg-white rounded-xl border border-gray-200 p-6">
             <p class="text-sm text-gray-500">Published Institutes</p>
-            <p class="text-3xl font-bold text-gray-900 mt-1">0</p>
+            <p class="text-3xl font-bold text-gray-900 mt-1">{{ $publishedInstitutes }}</p>
         </div>
         <div class="bg-white rounded-xl border border-gray-200 p-6">
             <p class="text-sm text-gray-500">Pending Review</p>
-            <p class="text-3xl font-bold text-gray-900 mt-1">0</p>
+            <p class="text-3xl font-bold text-gray-900 mt-1">{{ $pendingReview }}</p>
         </div>
     </div>
 @endsection

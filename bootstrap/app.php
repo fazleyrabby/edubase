@@ -30,7 +30,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->prependToGroup('web', RedirectMiddleware::class);
         $middleware->appendToGroup('web', SecurityHeaders::class);
 
-        $middleware->redirectGuestsTo('/admin/login');
+        $middleware->redirectGuestsTo('/login');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
