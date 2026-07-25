@@ -13,7 +13,6 @@ storage/logs/*
 storage/tmp/*
 bootstrap/cache/*
 .env
-.env.*
 .idea
 .vscode
 tests
