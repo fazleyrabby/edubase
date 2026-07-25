@@ -29,10 +29,14 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($roles as $role => $name) {
-            User::factory()->create([
-                'name' => $name,
-                'email' => "{$role}@edubase.com",
-            ])->assignRole($role);
+            $user = User::firstOrCreate(
+                ['email' => "{$role}@edubase.com"],
+                [
+                    'name' => $name,
+                    'password' => bcrypt('password'),
+                ]
+            );
+            $user->assignRole($role);
         }
     }
 }

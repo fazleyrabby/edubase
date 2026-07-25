@@ -38,11 +38,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->hasAnyRole(['super_admin', 'admin', 'editor', 'moderator', 'data_operator', 'analyst'])) {
-                Auth::logout();
-                $request->session()->invalidate();
-                $request->session()->regenerateToken();
-
-                return back()->withErrors(['email' => 'Access denied.']);
+                return redirect()->intended(route('admin.dashboard'));
             }
 
             return redirect()->intended(route('dashboard'));

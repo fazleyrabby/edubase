@@ -6,8 +6,8 @@ git add .
 git commit -m "Deploy automatic update" || true
 git push origin main || true
 
-echo "=== Deploying to signalstack VPS ==="
-ssh signalstack << 'EOF'
+echo "=== Deploying to homelab VPS ==="
+ssh homelab << 'EOF'
   set -e
   mkdir -p ~/apps
   
@@ -36,6 +36,7 @@ ssh signalstack << 'EOF'
   echo "Running post-deploy tasks inside container..."
   docker exec edubase_app php artisan key:generate --force || true
   docker exec edubase_app php artisan migrate --force
+  docker exec edubase_app php artisan db:seed --class=DatabaseSeeder --force
 
   echo "Restarting cloudflared tunnel to apply hostname mapping..."
   sudo systemctl restart cloudflared || true

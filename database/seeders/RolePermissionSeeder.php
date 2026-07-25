@@ -38,15 +38,15 @@ class RolePermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::firstOrCreate(['name' => $permission]);
         }
 
         // Super Admin — all permissions
-        $superAdmin = Role::create(['name' => 'super_admin']);
+        $superAdmin = Role::firstOrCreate(['name' => 'super_admin']);
         $superAdmin->givePermissionTo(Permission::all());
 
         // Admin — all CRUD, cannot manage super_admins or delete system data
-        $admin = Role::create(['name' => 'admin']);
+        $admin = Role::firstOrCreate(['name' => 'admin']);
         $admin->givePermissionTo([
             'institute.view', 'institute.create', 'institute.edit', 'institute.delete', 'institute.publish', 'institute.archive',
             'fee.view', 'fee.create', 'fee.edit', 'fee.delete', 'fee.approve', 'fee.reject',
@@ -63,7 +63,7 @@ class RolePermissionSeeder extends Seeder
         ]);
 
         // Editor — create/edit/publish content, manage taxonomies and media
-        $editor = Role::create(['name' => 'editor']);
+        $editor = Role::firstOrCreate(['name' => 'editor']);
         $editor->givePermissionTo([
             'institute.view', 'institute.create', 'institute.edit', 'institute.publish',
             'fee.view', 'fee.create', 'fee.edit',
@@ -75,7 +75,7 @@ class RolePermissionSeeder extends Seeder
         ]);
 
         // Moderator — review and approve/reject content, view moderation queue
-        $moderator = Role::create(['name' => 'moderator']);
+        $moderator = Role::firstOrCreate(['name' => 'moderator']);
         $moderator->givePermissionTo([
             'institute.view', 'institute.edit', 'institute.publish',
             'fee.view', 'fee.approve', 'fee.reject',
@@ -84,7 +84,7 @@ class RolePermissionSeeder extends Seeder
         ]);
 
         // Data Operator — create/edit draft content, submit for review
-        $dataOperator = Role::create(['name' => 'data_operator']);
+        $dataOperator = Role::firstOrCreate(['name' => 'data_operator']);
         $dataOperator->givePermissionTo([
             'institute.view', 'institute.create', 'institute.edit',
             'fee.view', 'fee.create', 'fee.edit',
@@ -95,7 +95,7 @@ class RolePermissionSeeder extends Seeder
         ]);
 
         // Analyst — read-only access + export
-        $analyst = Role::create(['name' => 'analyst']);
+        $analyst = Role::firstOrCreate(['name' => 'analyst']);
         $analyst->givePermissionTo([
             'institute.view',
             'fee.view',
