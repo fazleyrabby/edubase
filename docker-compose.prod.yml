@@ -5,6 +5,9 @@ services:
       dockerfile: Dockerfile
     container_name: edubase_app
     restart: unless-stopped
+    # Fix storage ownership at runtime — volume mounts override the image's build-time chown,
+    # so php-fpm (www-data) would inherit host-owned directories and fail to write logs/cache.
+    command: sh -c "chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache && exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"
     ports:
       - "127.0.0.1:8083:80"
     env_file:

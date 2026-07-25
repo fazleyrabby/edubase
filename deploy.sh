@@ -21,7 +21,7 @@ ssh homelab << 'EOF'
   # Fix permissions so git can update storage/bootstrap-cache files owned by www-data
   if docker ps --format "{{.Names}}" | grep -q edubase_app; then
     echo "Fixing permissions from inside container..."
-    docker exec edubase_app sh -c 'chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache' || true
+    docker exec edubase_app sh -c 'chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache' || true
   fi
 
   echo "Pulling latest changes from main branch..."
@@ -56,7 +56,7 @@ ssh homelab << 'EOF'
   docker exec edubase_app php artisan db:seed --class=DatabaseSeeder --force
 
   echo "Fixing storage permissions..."
-  docker exec edubase_app sh -c 'chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache'
+  docker exec edubase_app sh -c 'chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache'
 
   echo "Restarting cloudflared tunnel..."
   sudo systemctl restart cloudflared || true
